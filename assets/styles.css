@@ -1,0 +1,158 @@
+/* 
+    Colors
+*/
+/* 
+    Typography
+*/
+/* 
+- Homepage Items: 14px
+- Detail Page: 16px  
+*/
+/* 
+Weights: 300, 600, 800 
+*/
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-size: 14px;
+  background-color: #fafafa;
+  font-weight: 300;
+}
+
+li {
+  list-style: none;
+}
+
+.d-none {
+  display: none;
+}
+
+.bg-gray {
+  background-color: gray;
+}
+
+.bg-black {
+  background-color: #000;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.bg-orange {
+  background-color: orange;
+}
+
+/* ---------------------------------- */
+/* ---------------------------------- */
+/* ---------------------------------- */
+/* ---------------------------------- */
+/* ---------------------------------- */
+/* 
+    Header 
+*/
+.container {
+  margin: auto;
+  width: 90%;
+}
+
+header {
+  background-color: white;
+  box-shadow: 0 1px 5px gainsboro;
+  padding: 1.5% 0;
+}
+
+.header__contentNav {
+  display: flex;
+  justify-content: space-between;
+}
+.header__contentNav .content_title h1 {
+  font-weight: 700;
+  font-size: 1.6em;
+}
+.header__contentNav .content_mode {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header__contentNav .content_mode > p:hover {
+  cursor: pointer;
+}
+.header__contentNav .content_mode p {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+.header__contentNav .content_mode i {
+  margin-right: 0.3em;
+}
+.header__contentNav .content_mode p.active {
+  display: none;
+}
+
+/* 
+    Main
+*/
+.content_filters {
+  margin: 3em 0;
+  display: grid;
+  grid-template-columns: 40% 1fr 15%;
+}
+.content_filters > div {
+  background-color: white;
+  padding: 1.5em;
+  box-shadow: 1px 1px 7px #e6e6e6;
+  border-radius: 5px;
+}
+.content_filters .content_select {
+  grid-column-start: 3;
+}
+
+.content_search p {
+  color: #858585;
+}
+.content_search p i {
+  margin-right: 1em;
+}
+
+.content_select div {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  cursor: pointer;
+}
+.content_select div ul {
+  position: absolute;
+  top: 0;
+  left: -1.5em;
+  margin-top: 35%;
+  width: 100%;
+  padding: 1em 1.5em;
+  background-color: white;
+  box-shadow: 1px 1px 7px #e6e6e6;
+}
+.content_select div ul > li:hover {
+  background-color: #fafafa;
+}
+
+/*# sourceMappingURL=styles.css.map */
