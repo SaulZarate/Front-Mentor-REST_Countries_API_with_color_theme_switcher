@@ -196,7 +196,8 @@ header {
 /* -------------------------------- */
 /* ------------ MOBILE ------------ */
 /* -------------------------------- */
-@media only screen and (max-width: 375px) {
+/* @media only screen and (max-width: 375px) */
+@media only screen and (max-width: 475px) {
   /* Header */
   header .header__contentNav {
     padding: 1.5em 0;
