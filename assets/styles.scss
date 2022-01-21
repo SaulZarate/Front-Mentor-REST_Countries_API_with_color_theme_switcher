@@ -8,7 +8,7 @@ $color_white: hsl(0, 0%, 100%); // Dark Mode Text & Light Mode Elements
 $text_light: hsl(200, 15%, 8%); // Very Dark Blue (Light Mode Text)
 $input_light: hsl(0, 0%, 52%); // Dark Gray (Light Mode Input)
 
-
+$shadow_light: rgb(230,230,230); 
 /* 
     Typography
 */
@@ -62,20 +62,6 @@ li{
     display: none;
 }
 
-// For test
-.bg-gray{
-    background-color: gray;
-}
-.bg-black{
-    background-color: #000;
-}
-.bg-white{
-    background-color: #fff;
-}
-.bg-orange{
-    background-color: orange;
-}
-
 /* ---------------------------------- */
 /* ---------------------------------- */
 /* ---------------------------------- */
@@ -93,9 +79,10 @@ li{
 
 header{
     background-color: $color_white;
-    box-shadow: 0 1px 5px rgb(220, 220, 220);
+    box-shadow: 0 1px 5px $shadow_light;
     padding: 1.5% 0;
 }
+
 .header__contentNav{
     display: flex;
     justify-content: space-between;
@@ -109,6 +96,7 @@ header{
         display: flex;
         flex-direction: column;
         justify-content: center;
+
         > p {
             &:hover{
                 cursor: pointer;
@@ -145,7 +133,7 @@ header{
     > div{
         background-color: $color_white;
         padding: 1.5em;
-        box-shadow: 1px 1px 7px rgb(230, 230, 230);
+        box-shadow: 1px 1px 7px $shadow_light;
         border-radius: 5px;
         
     }
@@ -155,14 +143,14 @@ header{
     }
 }
 
-.content_search p{
+.content_search{
     color: $input_light;
-
     i {
         margin-right: 1em;
     }
 }
 
+/* Filter by region */
 .content_select div{
     display: flex;
     justify-content: space-between;
@@ -177,10 +165,124 @@ header{
         width: 100%;
         padding: 1em 1.5em;
         background-color: $color_white;
-        box-shadow: 1px 1px 7px rgb(230, 230, 230);
+        box-shadow: 1px 1px 7px $shadow_light;
 
         > li:hover{
             background-color: $bg_light;
         }
     }
 } 
+
+/* Input Search */
+#input_countrie{
+    border: none;
+    padding: 0;
+    
+    &:focus{
+        outline: none;
+    }
+}
+
+
+
+/* ---------- */
+/*    Cards   */
+/* ---------- */
+
+.content_countries{
+    display: grid;
+    // Size row
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(12,1fr);
+
+    /* gap: row-gap | column-gap  */
+    gap: 5%;
+
+    .card{
+        height: 350px;
+        background-color: $color_white;
+        grid-column-end: span 3;
+        box-shadow: 2px 2px 7px $shadow_light;
+        border-radius: 5px;
+        
+        .content_image{
+            height: 50%;
+            
+            img{
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+        }
+
+        .content_text{
+            height: 50%;
+            padding: 1.5em;
+
+            h2{
+                font-size: 1.5em;
+                font-weight: 600;
+                margin-bottom: .8em;
+            }
+            > p {
+                margin-bottom: .5em;
+                span{
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+/* -------------------------------- */
+/* ------------ MOBILE ------------ */
+/* -------------------------------- */
+@media only screen and (max-width: 375px) {
+    
+    /* Header */
+    header .header__contentNav{
+        padding: 1.5em 0;
+
+        .content_title h1{
+            font-size: 1.1em
+        }
+
+        .content_mode p{
+            font-size: 1em;
+        }
+    }
+    
+    .content_filters{
+        margin-top: 1.8em;
+        row-gap: 2.2em;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+
+        .content_select{
+            grid-column-start: 1;
+            grid-row-start: 2;
+            width: 60%;
+
+            div ul{
+                margin-top: 25%;
+            }
+        }
+        
+    }
+ 
+    /* Main */
+    .content_countries{
+        row-gap: 3em;
+
+        .card{
+            grid-column-end: span 12;
+        }
+    }
+}

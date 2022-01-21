@@ -48,22 +48,6 @@ li {
   display: none;
 }
 
-.bg-gray {
-  background-color: gray;
-}
-
-.bg-black {
-  background-color: #000;
-}
-
-.bg-white {
-  background-color: #fff;
-}
-
-.bg-orange {
-  background-color: orange;
-}
-
 /* ---------------------------------- */
 /* ---------------------------------- */
 /* ---------------------------------- */
@@ -79,7 +63,7 @@ li {
 
 header {
   background-color: white;
-  box-shadow: 0 1px 5px gainsboro;
+  box-shadow: 0 1px 5px #e6e6e6;
   padding: 1.5% 0;
 }
 
@@ -128,13 +112,14 @@ header {
   grid-column-start: 3;
 }
 
-.content_search p {
+.content_search {
   color: #858585;
 }
-.content_search p i {
+.content_search i {
   margin-right: 1em;
 }
 
+/* Filter by region */
 .content_select div {
   display: flex;
   justify-content: space-between;
@@ -153,6 +138,98 @@ header {
 }
 .content_select div ul > li:hover {
   background-color: #fafafa;
+}
+
+/* Input Search */
+#input_countrie {
+  border: none;
+  padding: 0;
+}
+#input_countrie:focus {
+  outline: none;
+}
+
+/* ---------- */
+/*    Cards   */
+/* ---------- */
+.content_countries {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(12, 1fr);
+  /* gap: row-gap | column-gap  */
+  gap: 5%;
+}
+.content_countries .card {
+  height: 350px;
+  background-color: white;
+  grid-column-end: span 3;
+  box-shadow: 2px 2px 7px #e6e6e6;
+  border-radius: 5px;
+}
+.content_countries .card .content_image {
+  height: 50%;
+}
+.content_countries .card .content_image img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+.content_countries .card .content_text {
+  height: 50%;
+  padding: 1.5em;
+}
+.content_countries .card .content_text h2 {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-bottom: 0.8em;
+}
+.content_countries .card .content_text > p {
+  margin-bottom: 0.5em;
+}
+.content_countries .card .content_text > p span {
+  font-weight: 600;
+}
+
+/* -------------------------------- */
+/* ------------ MOBILE ------------ */
+/* -------------------------------- */
+@media only screen and (max-width: 375px) {
+  /* Header */
+  header .header__contentNav {
+    padding: 1.5em 0;
+  }
+  header .header__contentNav .content_title h1 {
+    font-size: 1.1em;
+  }
+  header .header__contentNav .content_mode p {
+    font-size: 1em;
+  }
+
+  .content_filters {
+    margin-top: 1.8em;
+    row-gap: 2.2em;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .content_filters .content_select {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    width: 60%;
+  }
+  .content_filters .content_select div ul {
+    margin-top: 25%;
+  }
+
+  /* Main */
+  .content_countries {
+    row-gap: 3em;
+  }
+  .content_countries .card {
+    grid-column-end: span 12;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */
