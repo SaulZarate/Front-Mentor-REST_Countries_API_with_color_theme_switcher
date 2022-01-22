@@ -1,28 +1,46 @@
 const URL_API = 'https://restcountries.com/v2/all'
 
-// fetch(URL_API).then(res => res.json()).then(data => console.log(data))
 
 window.addEventListener('DOMContentLoaded', () => {
-
+    /* 
+        Elements 
+    */
     const div_content_mode = document.getElementById('content_mode')
     const div_filter = document.querySelector('.content_select div')
     const options_select = document.querySelectorAll('#ul_select > li')
     const div_countries = document.querySelector('section.content_countries')
-
-    div_content_mode.addEventListener('click', (e) => switchMode(e.target))
-    div_filter.addEventListener('click', (e) => activeAccordion(div_filter))
-    options_select.forEach(option => option.addEventListener('click', e => addFilterSelect(e.target)))
-    focusInputSearch()
+    const input_countrie = document.getElementById('input_countrie')
 
 
-    /* DATA - API */
+    /* Data */
     let data = getDataLocalStorage()
+
+    /* 
+        Events
+    */
+    /* Switch mode */
+    div_content_mode.addEventListener('click', (e) => switchMode(e.target))
+    /* "Select" filter by Region */
+    div_filter.addEventListener('click', (e) => activeAccordion(div_filter))
+    /* Filter by region */
+    options_select.forEach(option => option.addEventListener('click', e => filterByRegion(e.target, options_select, data.data, div_countries)))
+    /* Focus to input search */
+    focusInputSearch()
+    /* Search */
+    input_countrie.addEventListener('input', e => searchByCountrie(e.target.value, data.data, div_countries) )
+
+    /* 
+        DATA - API 
+    */
     if (data == null ){
         // Find in API
         fetch(URL_API)
             .then(res => res.json())
             .then(info => {
-                console.log(info)
+                data = {
+                    length: info.length,
+                    data: info
+                }
                 // Save
                 saveLocalStorage(info)
                 // Add countries to DOM
@@ -35,8 +53,6 @@ window.addEventListener('DOMContentLoaded', () => {
             // Add countries to DOM
             div_countries.innerHTML = createHTMLCountries(data.data)
     }
-
-
 })
 
 
@@ -61,9 +77,6 @@ function switchMode(element) {
         p_dark.classList.remove('active')
         p_light.classList.add('active')
     }
-}
-function addFilterSelect(option) {
-    console.log(option.textContent)
 }
 function focusInputSearch(){
     const input = document.getElementById('input_countrie')
@@ -112,4 +125,21 @@ function createCardCountrie(countrie){
             </div>
         </div>
     `
+}
+
+/* Filter by region */
+function filterByRegion(option, options, data, div_content) {
+    options.forEach( option => option.style.fontWeight = '300')
+    option.style.fontWeight = "600"
+    
+    const region = option.getAttribute('data-key')
+    const countries = data.filter( countrie => countrie.region == region)
+    div_content.innerHTML = createHTMLCountries(countries)
+}
+
+/* Search by countrie */
+function searchByCountrie(value, data, div_content){
+    /* console.log(value) */
+    const countries = data.filter( countrie => countrie.name.toLowerCase().includes(value))
+    div_content.innerHTML = createHTMLCountries(countries)
 }
