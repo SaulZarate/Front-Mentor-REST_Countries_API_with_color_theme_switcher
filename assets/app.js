@@ -13,8 +13,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     /* Data */
-    let data = getDataLocalStorage()
-
+    let data = getDataLocalStorage() || {length: 0, data: []}
+    
     /* 
         Events
     */
@@ -24,15 +24,19 @@ window.addEventListener('DOMContentLoaded', () => {
     div_filter.addEventListener('click', (e) => activeAccordion(div_filter))
     /* Filter by region */
     options_select.forEach(option => option.addEventListener('click', e => filterByRegion(e.target, options_select, data.data, div_countries)))
+    /* Search by countrie */
+    input_countrie.addEventListener('input', e => searchByCountrie(e.target.value, data.data, div_countries) )
+
+    /* 
+        Functionalities 
+    */
     /* Focus to input search */
     focusInputSearch()
-    /* Search */
-    input_countrie.addEventListener('input', e => searchByCountrie(e.target.value, data.data, div_countries) )
 
     /* 
         DATA - API 
     */
-    if (data == null ){
+    if ( data.length == 0 ){
         // Find in API
         fetch(URL_API)
             .then(res => res.json())
@@ -66,8 +70,11 @@ function activeAccordion(element) {
     }
 }
 function switchMode(element) {
+    
+    /* Switch */
     const p_dark = document.getElementById('mode-dark')
     const p_light = document.getElementById('mode-light')
+    const tag_body = document.querySelector('body')
 
     if (element.id == 'mode-dark') {
         p_light.classList.remove('active')
@@ -77,6 +84,10 @@ function switchMode(element) {
         p_dark.classList.remove('active')
         p_light.classList.add('active')
     }
+
+    // Dark mode
+    setDarkMode(tag_body)
+
 }
 function focusInputSearch(){
     const input = document.getElementById('input_countrie')
@@ -142,4 +153,26 @@ function searchByCountrie(value, data, div_content){
     /* console.log(value) */
     const countries = data.filter( countrie => countrie.name.toLowerCase().includes(value))
     div_content.innerHTML = createHTMLCountries(countries)
+}
+
+/* Dark mode */
+function setDarkMode(body){
+    const tag_header = document.querySelector('header')
+    const section_filters = document.querySelector('.content_filters')
+    const section_content_countries = document.querySelector('.content_countries')
+
+    if(body.classList.contains('dark-mode')){
+        // Light mode
+        body.classList.remove('dark-mode')
+        tag_header.classList.remove('dark-mode')
+        section_filters.classList.remove('dark-mode')
+        section_content_countries.classList.remove('dark-mode')
+    }else{
+        // Dark mode
+        body.classList.add('dark-mode')
+        tag_header.classList.add('dark-mode')
+        section_filters.classList.add('dark-mode')
+        section_content_countries.classList.add('dark-mode')
+    }
+
 }

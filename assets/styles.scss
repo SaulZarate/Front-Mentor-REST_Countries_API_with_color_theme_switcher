@@ -9,6 +9,8 @@ $text_light: hsl(200, 15%, 8%); // Very Dark Blue (Light Mode Text)
 $input_light: hsl(0, 0%, 52%); // Dark Gray (Light Mode Input)
 
 $shadow_light: rgb(230,230,230); 
+$shadow_dark: rgb(40,40,40);
+
 /* 
     Typography
 */
@@ -54,6 +56,10 @@ body{
     font-weight: 300;
 }
 
+body.dark-mode{
+    background-color: $bg_dark;
+}
+
 li{
     list-style: none;
 }
@@ -81,6 +87,13 @@ header{
     background-color: $color_white;
     box-shadow: 0 1px 5px $shadow_light;
     padding: 1.5% 0;
+}
+
+header.dark-mode{
+    background-color: $elements_dark;
+    box-shadow: 0 1px 5px $shadow_dark;
+    color: $color_white;
+    transition: background-color, box-shadow, color .2s;
 }
 
 .header__contentNav{
@@ -136,6 +149,49 @@ header{
         box-shadow: 1px 1px 7px $shadow_light;
         border-radius: 5px;
         
+    }
+    
+    &.dark-mode > div{
+        background-color: $elements_dark;
+        box-shadow: 1px 1px 5px $shadow_dark;
+        transition: background-color, box-shadow, color .2s;
+    }
+    &.dark-mode {
+        /* Search */
+        .content_search form {
+            label{
+                color: $color_white;
+                opacity: .8;
+            }
+            input{
+                background-color: $elements_dark;
+                color: $color_white; 
+                &::placeholder {
+                    opacity: .8;
+                    color: $color_white;
+                }
+            }
+        }
+        /* Filter */
+        .content_select div{
+            z-index: 9;
+            span{
+                color: $color_white;
+                opacity: .8;
+            }
+            ul{
+                background-color: $elements_dark;
+                box-shadow: 1px 1px 7px $shadow_dark;
+
+                > li{
+                    color: $color_white;
+                    opacity: .9;
+                    &:hover{
+                        background-color: $bg_dark;
+                    }
+                }
+            }
+        }
     }
 
     .content_select{
@@ -198,13 +254,22 @@ header{
     /* gap: row-gap | column-gap  */
     gap: 40px 5%;
 
+    &.dark-mode .card{
+        background-color: $elements_dark;
+        box-shadow: 2px 2px 7px $shadow_dark;
+        color: $color_white;
+        opacity: .9;
+        transition: background-color, box-shadow, color .2s;
+        
+    }
+
     .card{
         height: 350px;
         background-color: $color_white;
         grid-column-end: span 3;
         box-shadow: 2px 2px 7px $shadow_light;
         border-radius: 5px;
-        
+
         .content_image{
             height: 50%;
             
@@ -286,6 +351,19 @@ header{
 
         .card{
             grid-column-end: span 12;
+            height: 400px;
+
+            .content_image{
+                height: 60%;
+                img{
+                    object-fit: fill;
+                    object-position: center;
+                }
+            }
+
+            .content_text{
+                height: 40%;
+            }
         }
     }
 }

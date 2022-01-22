@@ -40,6 +40,10 @@ body {
   font-weight: 300;
 }
 
+body.dark-mode {
+  background-color: #202c37;
+}
+
 li {
   list-style: none;
 }
@@ -65,6 +69,13 @@ header {
   background-color: white;
   box-shadow: 0 1px 5px #e6e6e6;
   padding: 1.5% 0;
+}
+
+header.dark-mode {
+  background-color: #2b3945;
+  box-shadow: 0 1px 5px #282828;
+  color: white;
+  transition: background-color, box-shadow, color 0.2s;
 }
 
 .header__contentNav {
@@ -107,6 +118,45 @@ header {
   padding: 1.5em;
   box-shadow: 1px 1px 7px #e6e6e6;
   border-radius: 5px;
+}
+.content_filters.dark-mode > div {
+  background-color: #2b3945;
+  box-shadow: 1px 1px 5px #282828;
+  transition: background-color, box-shadow, color 0.2s;
+}
+.content_filters.dark-mode {
+  /* Search */
+  /* Filter */
+}
+.content_filters.dark-mode .content_search form label {
+  color: white;
+  opacity: 0.8;
+}
+.content_filters.dark-mode .content_search form input {
+  background-color: #2b3945;
+  color: white;
+}
+.content_filters.dark-mode .content_search form input::placeholder {
+  opacity: 0.8;
+  color: white;
+}
+.content_filters.dark-mode .content_select div {
+  z-index: 9;
+}
+.content_filters.dark-mode .content_select div span {
+  color: white;
+  opacity: 0.8;
+}
+.content_filters.dark-mode .content_select div ul {
+  background-color: #2b3945;
+  box-shadow: 1px 1px 7px #282828;
+}
+.content_filters.dark-mode .content_select div ul > li {
+  color: white;
+  opacity: 0.9;
+}
+.content_filters.dark-mode .content_select div ul > li:hover {
+  background-color: #202c37;
 }
 .content_filters .content_select {
   grid-column-start: 3;
@@ -158,6 +208,13 @@ header {
   grid-template-columns: repeat(12, 1fr);
   /* gap: row-gap | column-gap  */
   gap: 40px 5%;
+}
+.content_countries.dark-mode .card {
+  background-color: #2b3945;
+  box-shadow: 2px 2px 7px #282828;
+  color: white;
+  opacity: 0.9;
+  transition: background-color, box-shadow, color 0.2s;
 }
 .content_countries .card {
   height: 350px;
@@ -230,6 +287,17 @@ header {
   }
   .content_countries .card {
     grid-column-end: span 12;
+    height: 400px;
+  }
+  .content_countries .card .content_image {
+    height: 60%;
+  }
+  .content_countries .card .content_image img {
+    object-fit: fill;
+    object-position: center;
+  }
+  .content_countries .card .content_text {
+    height: 40%;
   }
 }
 
