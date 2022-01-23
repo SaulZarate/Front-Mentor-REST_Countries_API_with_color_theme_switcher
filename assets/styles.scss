@@ -269,6 +269,11 @@ header.dark-mode{
         grid-column-end: span 3;
         box-shadow: 2px 2px 7px $shadow_light;
         border-radius: 5px;
+        overflow: hidden;
+
+        &:hover{
+            cursor: pointer;
+        }
 
         .content_image{
             height: 50%;

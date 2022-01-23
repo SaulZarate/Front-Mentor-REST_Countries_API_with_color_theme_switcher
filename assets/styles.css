@@ -222,6 +222,10 @@ header.dark-mode {
   grid-column-end: span 3;
   box-shadow: 2px 2px 7px #e6e6e6;
   border-radius: 5px;
+  overflow: hidden;
+}
+.content_countries .card:hover {
+  cursor: pointer;
 }
 .content_countries .card .content_image {
   height: 50%;

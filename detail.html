@@ -1,26 +1,57 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Front Mentor | REST Countries API with color theme switcher</title>
 
-    <!-- Style -->
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/deecb3ce02.js" crossorigin="anonymous"></script>
+
+    <!-- My Styles -->
     <link rel="stylesheet" href="./assets/styles.css">
 
 </head>
+
 <body>
 
     <header>
+        <div class="container header__contentNav">
+            <div class="content_title">
+                <h1>Where in the World?</h1>
+            </div>
 
+            <div class="content_mode" id="content_mode">
+                <p id="mode-dark">
+                    <i class="far fa-moon"></i>
+                    Light Mode
+                </p>
+                <p id="mode-light" class="active">
+                    <i class="fas fa-moon"></i>
+                    Dark Mode
+                </p>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <h1>Details</h1>
+
+    <main class="container">
+
+        <section class="content_detail">
+            
+        </section>
+
     </main>
 
-
-    <script src="./assets/app.js"></script>
+    <!-- My JavaScript -->
+    <script src="./assets/detail.js"></script>
 </body>
+
 </html>
