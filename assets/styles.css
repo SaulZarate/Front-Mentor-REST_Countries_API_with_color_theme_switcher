@@ -287,7 +287,8 @@ header.dark-mode {
   }
   .content_countries .card {
     grid-column-end: span 12;
-    height: 400px;
+    height: 450px;
+    max-height: 450px;
   }
   .content_countries .card .content_image {
     height: 60%;

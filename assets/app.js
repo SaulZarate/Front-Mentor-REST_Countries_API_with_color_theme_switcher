@@ -132,7 +132,7 @@ function createCardCountrie(countrie){
                 <h2>${countrie.name}</h2>
                 <p><span>Population:</span> ${countrie.population}</p>
                 <p><span>Region:</span> ${countrie.region}</p>
-                <p><span>Capital:</span> ${countrie.capital}</p>
+                <p><span>Capital:</span> ${(countrie.capital || "...")}</p>
             </div>
         </div>
     `
