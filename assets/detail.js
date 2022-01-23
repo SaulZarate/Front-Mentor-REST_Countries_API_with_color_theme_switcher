@@ -1,23 +1,26 @@
+const url_home = localStorage.getItem('url_index')
 const countrie_id = getIdCountrieByGET()
 const data = getDataLocalStorage()
-console.log(localStorage.getItem('theme'))
+const countrie = findCountrie(countrie_id, data.data)
 
 // Middleware url
-if(countrie_id == null || countrie_id > data.data.length){
+if(countrie_id == null || !countrie){
     window.location.href = localStorage.getItem('url_index')
 }
 
+console.log(countrie)
 window.addEventListener('DOMContentLoaded', () =>{
 
     /* 
         Elements 
     */
     const div_content_mode = document.getElementById('content_mode')
-
+    const btn_back = document.getElementById('btn_back')
     /* 
         Events 
     */
     div_content_mode.addEventListener('click', (e) => switchMode(e.target))
+    btn_back.addEventListener('click', () => document.location.href = url_home)
 
    /* Theme */
    if(getTheme_LocalStorage() == 'dark-mode') switchMode({id: 'mode-dark'})
@@ -30,6 +33,10 @@ function getIdCountrieByGET() {
     const positionId = urlCurrent.indexOf("=") + 1
     const id = urlCurrent.substring(positionId)
     return parseInt(id)
+}
+/* Validation id */
+function findCountrie(id, countries){
+    return countries.find(c => c.numericCode == id) || false
 }
 /* Switch mode */
 function switchMode(elementClick) {

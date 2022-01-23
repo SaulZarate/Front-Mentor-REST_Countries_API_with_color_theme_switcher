@@ -65,9 +65,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 })
 
-/* 
-    HOME
-*/
+/* Efect accordion in filters */
 function activeAccordion(element) {
     if (element.classList.contains('accordion-none')) {
         element.classList.remove('accordion-none')
@@ -155,7 +153,8 @@ function createHTMLCountries(countries) {
 /* Create Card */
 function createCardCountrie(countrie) {
     return `
-    <div class="card">
+    <div data-id="${countrie.numericCode}" class="card">
+        <a href="./detail.html?countrie=${countrie.numericCode}" > 
             <div class="content_image">
                 <img src="${countrie.flags.png}" alt="${countrie.name}">
             </div>
@@ -165,7 +164,8 @@ function createCardCountrie(countrie) {
                 <p><span>Region:</span> ${countrie.region}</p>
                 <p><span>Capital:</span> ${(countrie.capital || "...")}</p>
             </div>
-        </div>
+        </a>
+    </div>
     `
 }
 /* Filter by region */
