@@ -8,7 +8,6 @@ if(countrie_id == null || !countrie){
     window.location.href = localStorage.getItem('url_index')
 }
 
-console.log(countrie)
 window.addEventListener('DOMContentLoaded', () =>{
 
     /* 
@@ -60,16 +59,24 @@ function switchMode(elementClick) {
 /* Dark mode */
 function setDarkMode(body) {
     const tag_header = document.querySelector('header')
+    const div_btnBack = document.querySelector('.content_btn_back')
+    const div_detail = document.querySelector('.content_detail')
 
     /* Update view and theme in localstorage */
     if (body.classList.contains('dark-mode')) {
-        saveTheme_localStorage(null) // update To light mode
+        // update To light mode
+        saveTheme_localStorage(null) 
         body.classList.remove('dark-mode')
         tag_header.classList.remove('dark-mode')
+        div_btnBack.classList.remove('dark-mode')
+        div_detail.classList.remove('dark-mode')
     } else {
-        saveTheme_localStorage('dark-mode') // update To dark mode
+        // update To dark mode
+        saveTheme_localStorage('dark-mode') 
         body.classList.add('dark-mode')
         tag_header.classList.add('dark-mode')
+        div_btnBack.classList.add('dark-mode')
+        div_detail.classList.add('dark-mode')
     }
 }
 /* Save theme localstorage */
@@ -91,7 +98,7 @@ function createHTMLDetail(countrie){
     const currencies = countrie.currencies.reduce(reduceNames,[]).join()
     const languages = countrie.languages.reduce(reduceNames,[]).join()
     const borderCountries = getBorderCountries(countrie)
-    
+
     return `
     <!-- Image -->
     <div class="content_image">
@@ -139,6 +146,3 @@ function getBorderCountries(countrie){
     const alpha3Codes = countrie.borders
     return data.data.filter(countrie => alpha3Codes.includes(countrie.alpha3Code))
 }
-/* function isStringInArray(str, array){
-    
-} */

@@ -314,17 +314,28 @@ main.main_detail{
 
     /* Button Back */
     .content_btn_back {
-        margin-bottom: 3em;
+        margin-bottom: 2em;
         a{
             background-color: $color_white;
             border: none;
             opacity: .8;
             border-radius: 5px;
             padding: .3em 1.5em;
-            box-shadow: 1px 1px 5px rgb(210,210,210),
-            -1px -1px 3px rgb(210,210,210);
+            box-shadow: 1px 1px 5px $shadow_light,
+            -1px -1px 3px $shadow_light;
             i{
                 margin-right: .5em;
+            }
+        }
+
+        /* Dark mode */
+        &.dark-mode{
+            a{
+                color: $color_white;
+                background-color: $elements_dark;
+                border: 1px solid $shadow_dark;
+                box-shadow: 1px 1px 5px $shadow_dark,
+            -1px -1px 3px $shadow_dark;
             }
         }
     }
@@ -334,10 +345,10 @@ main.main_detail{
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         > div{
             width: 45%;
         }
-
         .content_image{
             height: 300px;
             max-height: 350px;
@@ -348,9 +359,7 @@ main.main_detail{
                 object-position: center;
             }
         }
-
         .content_text{
-            /* background-color: green; */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -361,7 +370,7 @@ main.main_detail{
                 h1{
                     font-size: 1.8em;
                     opacity: .9;
-                    font-weight: 800;
+                    font-weight: 600;
                 }
             }
             /* Body */
@@ -391,6 +400,7 @@ main.main_detail{
                     font-weight: 600;
                 }
                 .content_buttons button{
+                    margin-bottom: .1em;
                     margin-right: .1em;
                     background-color: $color_white;
                     border: 1px solid $shadow_light;
@@ -400,20 +410,29 @@ main.main_detail{
                 }
             }
         }
+
+        /* Dark mode */
+        &.dark-mode{
+            color: $color_white;
+
+            .content_text__footer .content_buttons button{
+                background-color: $elements_dark;
+                color: $color_white;
+                box-shadow: 1px 1px 5px $shadow_dark;
+                border: 1px solid $shadow_dark;
+            }
+        }
     }
 }
-
-
-
 
 
 
 /* -------------------------------- */
 /* ------------ MOBILE ------------ */
 /* -------------------------------- */
-// Front mentor
-/* @media only screen and (max-width: 375px) */
+// Front mentor => width: 375px
 
+/* Home */
 @media only screen and (max-width: 475px) {
     
     /* Header */
@@ -468,5 +487,43 @@ main.main_detail{
                 height: 40%;
             }
         }
+    }
+}
+/* Detail */
+@media only screen and (max-width: 475px){
+    main.main_detail{
+
+        .content_detail{
+            flex-direction: column;
+            /* Image */
+            .content_image{
+                width: 100%;
+                img{
+                    width: 100%;
+                }
+            }
+            /* Text */
+            .content_text{
+                width: 100%;
+                .content_text__body{
+                    flex-direction: column;
+                    > div{
+                        margin-bottom: 2em;
+                    }
+                    
+                    .body_right{
+                        margin-bottom: 1em;
+                    }
+                }
+                .content_text__footer{
+                    flex-direction: column;
+                    align-items: flex-start;
+                    h2{
+                        margin-bottom: .8em;
+                    }
+                }
+            }
+        }
+
     }
 }
