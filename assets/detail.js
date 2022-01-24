@@ -15,15 +15,18 @@ window.addEventListener('DOMContentLoaded', () =>{
         Elements 
     */
     const div_content_mode = document.getElementById('content_mode')
-    const btn_back = document.getElementById('btn_back')
+    const div_content_detail = document.querySelector('.content_detail')
+
     /* 
         Events 
     */
     div_content_mode.addEventListener('click', (e) => switchMode(e.target))
-    btn_back.addEventListener('click', () => document.location.href = url_home)
 
    /* Theme */
    if(getTheme_LocalStorage() == 'dark-mode') switchMode({id: 'mode-dark'})
+
+   /* Add data */
+    div_content_detail.innerHTML = createHTMLDetail(countrie)
 })
 
 /* Id countrie */
@@ -81,3 +84,61 @@ function getTheme_LocalStorage(){
 function getDataLocalStorage() {
     return JSON.parse(localStorage.getItem('data'))
 }
+/* Create HTML detil */
+function createHTMLDetail(countrie){
+    const reduceNames = (previus, currentValue) => previus.concat(currentValue.name)
+    const topLevelDomain = countrie.topLevelDomain.join()
+    const currencies = countrie.currencies.reduce(reduceNames,[]).join()
+    const languages = countrie.languages.reduce(reduceNames,[]).join()
+    const borderCountries = getBorderCountries(countrie)
+    
+    return `
+    <!-- Image -->
+    <div class="content_image">
+        <img src="${countrie.flags.png}" alt="${countrie.name}">
+    </div>
+
+    <!-- Text -->
+    <div class="content_text">
+        <div class="content_text__header">
+            <h1>${countrie.name}</h1>
+        </div>
+        <div class="content_text__body">
+            <div class="body_left">
+                <p><span>Native Name: </span>${countrie.nativeName}</p>
+                <p><span>Population: </span>${countrie.population}</p>
+                <p><span>Region: </span>${countrie.region}</p>
+                <p><span>Sub region: </span>${countrie.subregion}</p>
+                <p><span>Capital: </span>${countrie.capital}</p>
+            </div>
+            <div class="body_right">
+                <p><span>Top Level Domain: </span>${topLevelDomain}</p>
+                <p><span>Currencies: </span>${currencies}</p>
+                <p><span>Languages: </span>${languages}</p>
+            </div>
+        </div>
+        <div class="content_text__footer">
+            <h2>Border Countries:</h2>
+            <div class="content_buttons">
+                ${createButtonBorderCountrie(borderCountries)}
+            </div>
+        </div>
+    </div>
+    `
+}
+function createButtonBorderCountrie(borderCountries){
+    let htmlButtons = ''
+    borderCountries.forEach(countrie => {
+        htmlButtons += `
+        <button>${countrie.name}</button>
+        `
+    })
+    return htmlButtons
+}
+function getBorderCountries(countrie){
+    const alpha3Codes = countrie.borders
+    return data.data.filter(countrie => alpha3Codes.includes(countrie.alpha3Code))
+}
+/* function isStringInArray(str, array){
+    
+} */

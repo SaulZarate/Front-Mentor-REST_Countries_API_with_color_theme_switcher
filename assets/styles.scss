@@ -312,15 +312,15 @@ main.main_detail{
     font-size: 16px;
     margin-top: 3em;
 
-    /* Button */
+    /* Button Back */
     .content_btn_back {
         margin-bottom: 3em;
-        button{
+        a{
             background-color: $color_white;
             border: none;
             opacity: .8;
             border-radius: 5px;
-            padding: .8em 2em;
+            padding: .3em 1.5em;
             box-shadow: 1px 1px 5px rgb(210,210,210),
             -1px -1px 3px rgb(210,210,210);
             i{
@@ -333,15 +333,17 @@ main.main_detail{
     .content_detail{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         > div{
             width: 45%;
         }
 
         .content_image{
+            height: 300px;
             max-height: 350px;
             img{
                 border-radius: 5px;
-                width: 100%;
+                width: 90%;
                 object-fit: cover;
                 object-position: center;
             }
@@ -357,13 +359,14 @@ main.main_detail{
             /* Header */
             .content_text__header{
                 h1{
-                    font-size: 1.5em;
+                    font-size: 1.8em;
                     opacity: .9;
                     font-weight: 800;
                 }
             }
             /* Body */
             .content_text__body {
+                margin: 1.5em 0;
                 opacity: .9;
                 display: flex;
                 justify-content: space-between;

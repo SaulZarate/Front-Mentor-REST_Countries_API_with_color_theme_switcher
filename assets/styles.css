@@ -261,36 +261,38 @@ header.dark-mode {
 main.main_detail {
   font-size: 16px;
   margin-top: 3em;
-  /* Button */
+  /* Button Back */
   /* Detail */
 }
 main.main_detail .content_btn_back {
   margin-bottom: 3em;
 }
-main.main_detail .content_btn_back button {
+main.main_detail .content_btn_back a {
   background-color: white;
   border: none;
   opacity: 0.8;
   border-radius: 5px;
-  padding: 0.8em 2em;
+  padding: 0.3em 1.5em;
   box-shadow: 1px 1px 5px #d2d2d2, -1px -1px 3px #d2d2d2;
 }
-main.main_detail .content_btn_back button i {
+main.main_detail .content_btn_back a i {
   margin-right: 0.5em;
 }
 main.main_detail .content_detail {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 main.main_detail .content_detail > div {
   width: 45%;
 }
 main.main_detail .content_detail .content_image {
+  height: 300px;
   max-height: 350px;
 }
 main.main_detail .content_detail .content_image img {
   border-radius: 5px;
-  width: 100%;
+  width: 90%;
   object-fit: cover;
   object-position: center;
 }
@@ -305,11 +307,12 @@ main.main_detail .content_detail .content_text {
   /* Footer */
 }
 main.main_detail .content_detail .content_text .content_text__header h1 {
-  font-size: 1.5em;
+  font-size: 1.8em;
   opacity: 0.9;
   font-weight: 800;
 }
 main.main_detail .content_detail .content_text .content_text__body {
+  margin: 1.5em 0;
   opacity: 0.9;
   display: flex;
   justify-content: space-between;
