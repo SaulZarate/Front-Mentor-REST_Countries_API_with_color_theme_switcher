@@ -143,6 +143,6 @@ function createButtonBorderCountrie(borderCountries){
     return htmlButtons
 }
 function getBorderCountries(countrie){
-    const alpha3Codes = countrie.borders
+    const alpha3Codes = countrie.borders || []
     return data.data.filter(countrie => alpha3Codes.includes(countrie.alpha3Code))
 }
